@@ -1,0 +1,17 @@
+{
+  "name": "0050-reporter",
+  "version": "1.0.0",
+  "description": "Send Taiwan stock's K value and 0050 price to my email",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Taiwan",
+    "stock",
+    "0050"
+  ],
+  "author": "Wanlin Lin",
+  "license": "ISC",
+  "dependencies": {}
+}
