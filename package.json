@@ -4,6 +4,7 @@
   "description": "Send Taiwan stock's K value and 0050 price to my email",
   "main": "index.js",
   "scripts": {
+    "start": "node lib/index.js",
     "build": "babel src -d lib",
     "test": "test"
   },
