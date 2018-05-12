@@ -13,5 +13,7 @@
   ],
   "author": "Wanlin Lin",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "node-fetch": "^2.1.2"
+  }
 }
