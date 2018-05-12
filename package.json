@@ -17,6 +17,7 @@
   "author": "Wanlin Lin",
   "license": "ISC",
   "dependencies": {
+    "kdj": "^1.0.4",
     "node-fetch": "^2.1.2"
   },
   "devDependencies": {
