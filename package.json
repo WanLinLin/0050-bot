@@ -18,7 +18,8 @@
   "license": "ISC",
   "dependencies": {
     "kdj": "^1.0.4",
-    "node-fetch": "^2.1.2"
+    "node-fetch": "^2.1.2",
+    "nodemailer": "^4.6.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
