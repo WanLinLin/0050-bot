@@ -30,12 +30,13 @@ Promise.all([
     body: JSON.stringify({
       recipient: {'phone_number': PHONE_NUMBER},
       message: {
-        text: `安安，今天大盤K值是「${K}」\
-          \n0050 close: ${price.c}\
-          \n0050 high: ${price.h}\
-          \n0050 low: ${price.l}\
-          \n0050 open: ${price.o}\
-          \n0050 volume: ${price.v}\
+        text: `安安，最新的大盤K值是「${K}」\
+          \n0050 收盤價: ${price.c}\
+          \n0050 最高價: ${price.h}\
+          \n0050 最低價: ${price.l}\
+          \n0050 開盤價: ${price.o}\
+          \n0050 成交量: ${price.v}\
+          \n最新時間: ${price.t}\
         `,
       },
     })
