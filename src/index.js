@@ -3,7 +3,7 @@ import kdj from 'kdj'
 
 const {PAGE_TOKEN, PHONE_NUMBER} = process.env
 
-const kFetcher = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=%23001&callback=jQuery1113046182472349859216_1524904568790&_=1524904568792')
+const kFetcher = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=%23001')
   .then(res => res.text())
   .then(text => JSON.parse(/.*\((.*)\)/.exec(text)[1]).ta)
   .then(tas => tas.reduce((acc, ta) => {
@@ -15,7 +15,7 @@ const kFetcher = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=
   .then(data => kdj(data.close, data.low, data.high).K)
   .then(Ks => Ks[Ks.length - 1])
 
-const priceFetcher = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=0050&callback=jQuery111306968563702019166_1526120801969&_=1526120801971')
+const priceFetcher = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=0050')
   .then(res => res.text())
   .then(text => JSON.parse(/.*\((.*)\)/.exec(text)[1]).ta)
   .then(tas => tas[tas.length - 1])
