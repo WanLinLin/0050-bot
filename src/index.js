@@ -1,7 +1,12 @@
 import fetch from 'node-fetch'
 import kdj from 'kdj'
+import cool from 'cool-ascii-faces'
 
 const {PAGE_TOKEN, PHONE_NUMBER} = process.env
+
+const GREETS = ['安安', '嗨嗨', '尼好']
+
+const getGreet = () => GREETS[Math.floor(Math.random() * GREETS.length)]
 
 const kFetcher = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=%23001')
   .then(res => res.text())
@@ -30,7 +35,8 @@ Promise.all([
     body: JSON.stringify({
       recipient: {'phone_number': PHONE_NUMBER},
       message: {
-        text: `安安，最新的大盤K值是「${K}」\
+        text: `${getGreet()}，${cool()}\
+          \n大盤K值: ${K}\
           \n0050 收盤價: ${price.c}\
           \n0050 最高價: ${price.h}\
           \n0050 最低價: ${price.l}\
