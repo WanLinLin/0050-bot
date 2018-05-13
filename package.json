@@ -7,7 +7,6 @@
     "start": "node lib/index.js",
     "build": "babel src -d lib",
     "dev": "nodemon --exec \"npm run build && npm start\" --watch src",
-    "watch:build": "babel --watch src -d lib",
     "postinstall": "npm run build"
   },
   "keywords": [
