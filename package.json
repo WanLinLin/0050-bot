@@ -1,5 +1,5 @@
 {
-  "name": "0050-reporter",
+  "name": "0050-bot",
   "version": "1.0.0",
   "description": "Send Taiwan stock's K value and 0050 price to my email",
   "main": "index.js",
