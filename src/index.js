@@ -36,12 +36,11 @@ Promise.all([
       recipient: {'phone_number': PHONE_NUMBER},
       message: {
         text: `${getGreet()}，${cool()}\
-          \n大盤K值: ${K}\
+          \n大盤K值: ${new Number(K).toFixed(1)}\
           \n0050 收盤價: ${price.c}\
           \n0050 最高價: ${price.h}\
           \n0050 最低價: ${price.l}\
           \n0050 開盤價: ${price.o}\
-          \n0050 成交量: ${price.v}\
           \n最新時間: ${price.t}\
         `,
       },
