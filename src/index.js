@@ -44,12 +44,25 @@ const priceFetcher0056 = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=
   .then(data => ({Ks: kdj(data.close, data.low, data.high).K, tas: data.tas}))
   .then(({Ks, tas}) => ({K: Ks[Ks.length - 1], t: tas[tas.length - 1]}))
 
+const priceFetcher00692 = fetch('https://tw.quote.finance.yahoo.net/quote/q?type=ta&perd=d&mkt=10&sym=00692')
+  .then(res => res.text())
+  .then(text => JSON.parse(/.*\((.*)\)/.exec(text)[1]).ta)
+  .then(tas => tas.reduce((acc, ta) => {
+    acc.close.push(ta.c)
+    acc.low.push(ta.l)
+    acc.high.push(ta.h)
+    return acc
+  }, {close: [], low: [], high: [], tas}))
+  .then(data => ({Ks: kdj(data.close, data.low, data.high).K, tas: data.tas}))
+  .then(({Ks, tas}) => ({K: Ks[Ks.length - 1], t: tas[tas.length - 1]}))
+
 Promise.all([
   kFetcher,
   priceFetcher0050,
   priceFetcher0056,
+  priceFetcher00692,
 ])
-  .then(([K, price0050, price0056]) => fetch(`https://graph.facebook.com/v3.0/me/messages?access_token=${PAGE_TOKEN}`, {
+  .then(([K, price0050, price0056, price00692]) => fetch(`https://graph.facebook.com/v3.0/me/messages?access_token=${PAGE_TOKEN}`, {
     method: 'post',
     headers: {'content-type': 'application/json'},
     body: JSON.stringify({
@@ -69,6 +82,12 @@ Promise.all([
           \n0056 最高價: ${price0056.t.h}\
           \n0056 最低價: ${price0056.t.l}\
           \n0056 開盤價: ${price0056.t.o}\
+          \n==================\
+          \n00692 K值: ${new Number(price00692.K).toFixed(1)}\
+          \n00692 收盤價: ${price00692.t.c}\
+          \n00692 最高價: ${price00692.t.h}\
+          \n00692 最低價: ${price00692.t.l}\
+          \n00692 開盤價: ${price00692.t.o}\
           \n==================\
           \n資料時間: ${price0050.t.t}\
         `,
